@@ -1,0 +1,237 @@
+.container {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(91, 108, 255, 0.12);
+    box-shadow: 0 4px 24px rgba(60, 70, 160, 0.06);
+    font-family: var(--font-geist-sans), -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0.8rem clamp(1rem, 4vw, 2rem);
+}
+
+/* Logo + brand name */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    min-width: 0;
+    cursor: pointer;
+    user-select: none;
+}
+
+.logoIcon {
+    width: 40px;
+    height: 40px;
+    flex-shrink: 0;
+    filter: drop-shadow(0 6px 12px rgba(99, 102, 241, 0.35));
+    transition: transform 0.25s ease;
+}
+
+.brand:hover .logoIcon {
+    transform: rotate(-6deg) scale(1.07);
+}
+
+.brand h1 {
+    margin: 0;
+    font-size: 1.45rem;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    white-space: nowrap;
+
+    background: linear-gradient(135deg, #0f172a 0%, #312e81 50%, #6366f1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+/* Right side */
+.navbar_Option_Container {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+    gap: 1rem;
+}
+
+.buttonJoin {
+    padding: 0.65rem 1.7rem;
+    background: linear-gradient(135deg, #5b6cff, #8a4dff);
+    border-radius: 999px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    box-shadow: 0 8px 20px rgba(91, 108, 255, 0.35);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.buttonJoin p {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.buttonJoin:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 12px 26px rgba(91, 108, 255, 0.45);
+}
+
+.buttonJoin:active {
+    transform: translateY(0);
+}
+
+/* Logged-in user section */
+.userSection {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.greeting {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: #64748b;
+    max-width: 180px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.greeting span {
+    font-weight: 700;
+    background: linear-gradient(135deg, #312e81 0%, #6366f1 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+}
+
+.profileBtn {
+    padding: 0.5rem 1.4rem;
+    border-radius: 999px;
+    cursor: pointer;
+    user-select: none;
+    white-space: nowrap;
+    background: rgba(91, 108, 255, 0.08);
+    border: 1.5px solid rgba(91, 108, 255, 0.35);
+    transition: background 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.profileBtn p {
+    margin: 0;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #4f46e5;
+    transition: color 0.2s ease;
+}
+
+/* hover sirf mouse wale device par (phone par chipakta nahi) */
+@media (hover: hover) and (pointer: fine) {
+    .profileBtn:hover {
+        background: linear-gradient(135deg, #5b6cff, #8a4dff);
+        border-color: transparent;
+        transform: translateY(-2px);
+        box-shadow: 0 8px 20px rgba(91, 108, 255, 0.35);
+    }
+
+    .profileBtn:hover p {
+        color: #fff;
+    }
+}
+
+.profileBtn:active {
+    transform: translateY(0);
+    background: rgba(91, 108, 255, 0.18);
+}
+
+/* ============ Tablet (<= 768px) ============ */
+@media (max-width: 768px) {
+    .greeting {
+        max-width: 110px;
+    }
+
+    .userSection {
+        gap: 0.6rem;
+    }
+
+    .navbar_Option_Container {
+        gap: 0.6rem;
+    }
+}
+
+/* ============ Phone (<= 600px) ============ */
+@media (max-width: 600px) {
+    .navbar {
+        padding: 0.6rem 1rem;
+    }
+
+    .brand {
+        gap: 0.5rem;
+    }
+
+    .brand h1 {
+        font-size: 1.15rem;
+    }
+
+    .logoIcon {
+        width: 34px;
+        height: 34px;
+    }
+
+    /* jagah kam hai: "Hey, naam" phone par nahi dikhana */
+    .greeting {
+        display: none;
+    }
+
+    .userSection {
+        gap: 0.45rem;
+    }
+
+    .buttonJoin {
+        padding: 0.55rem 1.1rem;
+    }
+
+    .profileBtn {
+        padding: 0.45rem 0.95rem;
+    }
+
+    .profileBtn p {
+        font-size: 0.85rem;
+    }
+}
+
+/* ============ Small phones (<= 380px) ============ */
+@media (max-width: 380px) {
+    .brand h1 {
+        font-size: 1rem;
+    }
+
+    .logoIcon {
+        width: 30px;
+        height: 30px;
+    }
+
+    .profileBtn {
+        padding: 0.4rem 0.75rem;
+    }
+}
+
+/* ============ Very small (<= 330px): sirf logo ============ */
+@media (max-width: 330px) {
+    .brand h1 {
+        display: none;
+    }
+}

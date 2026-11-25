@@ -1,0 +1,390 @@
+.container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 90svh;
+    padding: 1.5rem 1rem;
+    overflow: hidden;
+    background:
+        radial-gradient(circle at 12% 18%, rgba(10, 95, 180, 0.12) 0, transparent 38%),
+        radial-gradient(circle at 88% 85%, rgba(0, 72, 139, 0.14) 0, transparent 40%),
+        linear-gradient(135deg, snow 0%, #eaf2fb 100%);
+}
+
+/* soft floating blobs in the page background */
+.container::before,
+.container::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+    background: rgba(0, 72, 139, 0.07);
+    animation: float 9s ease-in-out infinite;
+}
+
+.container::before {
+    width: 320px;
+    height: 320px;
+    top: -90px;
+    left: -90px;
+}
+
+.container::after {
+    width: 260px;
+    height: 260px;
+    bottom: -80px;
+    right: -60px;
+    animation-delay: -4s;
+}
+
+.cardContainer {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    width: 90vw;
+    max-width: 1000px;
+    min-height: 540px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: white;
+    border: 1px solid rgba(0, 72, 139, 0.08);
+    box-shadow:
+        0 2px 6px rgba(0, 72, 139, 0.06),
+        0 24px 55px rgba(0, 72, 139, 0.2);
+    animation: cardIn 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.cardContainer_left {
+    flex: 0.6;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    padding: 2.5rem 2rem;
+}
+
+.cardContainer_right {
+    position: relative;
+    flex: 0.4;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    overflow: hidden;
+    color: white;
+    background: linear-gradient(160deg, #0a5fb4 0%, #00488b 55%, #003466 100%);
+}
+
+/* decorative circles on the blue panel */
+.cardContainer_right::before,
+.cardContainer_right::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.cardContainer_right::before {
+    width: 220px;
+    height: 220px;
+    top: -70px;
+    right: -70px;
+}
+
+.cardContainer_right::after {
+    width: 180px;
+    height: 180px;
+    bottom: -60px;
+    left: -50px;
+    background: rgba(255, 255, 255, 0.06);
+}
+
+.cardLeft_heading {
+    position: relative;
+    display: inline-block;
+    align-self: center;
+    font-size: 2.1rem;
+    font-weight: 800;
+    color: #0f1b2d;
+    letter-spacing: -0.5px;
+    padding-bottom: 0.7rem;
+}
+
+/* small accent underline under heading */
+.cardLeft_heading::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 46px;
+    height: 4px;
+    border-radius: 4px;
+    transform: translateX(-50%);
+    background: linear-gradient(90deg, #00488b, #4aa3ff);
+}
+
+.inputContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.1rem;
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+    padding-top: 1.5rem;
+}
+
+.inputRow {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+    animation: fadeIn 0.3s ease;
+}
+
+.inputRow .inputField {
+    flex: 1;
+    min-width: 0;
+}
+
+.inputField {
+    width: 100%;
+    padding-inline: 1.2rem;
+    padding-block: 0.9rem;
+    font-size: 0.95rem;
+    color: #0f1b2d;
+    border-radius: 12px;
+    border: 1.5px solid #e1e6ee;
+    background: #f7f9fc;
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease,
+        background 0.2s ease, transform 0.2s ease;
+}
+
+.inputField::placeholder {
+    color: #98a2b3;
+}
+
+.inputField:hover {
+    border-color: #b9c7da;
+}
+
+.inputField:focus {
+    border-color: #00488b;
+    background: white;
+    transform: translateY(-1px);
+    box-shadow: 0 0 0 4px rgba(0, 72, 139, 0.13);
+}
+
+.buttonSubmit {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    padding: 0.9rem 1.3rem;
+    border-radius: 12px;
+    cursor: pointer;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-align: center;
+    user-select: none;
+    background: rgb(236, 236, 236);
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+
+/* shine sweep on hover */
+.buttonSubmit::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -120%;
+    width: 60%;
+    height: 100%;
+    transform: skewX(-20deg);
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.35), transparent);
+    transition: left 0.6s ease;
+}
+
+.buttonSubmit:hover::after {
+    left: 140%;
+}
+
+.buttonSubmit:hover {
+    transform: translateY(-2px);
+}
+
+.buttonSubmit:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* primary button (left side) */
+.cardContainer_left .buttonSubmit {
+    color: white;
+    background: linear-gradient(135deg, #0a5fb4, #00488b);
+    box-shadow: 0 8px 18px rgba(0, 72, 139, 0.32);
+}
+
+.cardContainer_left .buttonSubmit:hover {
+    box-shadow: 0 12px 24px rgba(0, 72, 139, 0.4);
+}
+
+/* secondary button (right side) */
+.right_card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 240px;
+    text-align: center;
+    font-size: 1.15rem;
+    font-weight: 500;
+}
+
+.right_card .buttonSubmit {
+    background: white;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+}
+
+.right_card .buttonSubmit:hover {
+    background: #eef4fb;
+}
+
+/* error / success message */
+
+.message {
+    width: 100%;
+    margin: 0;
+    padding: 11px 14px;
+    border-radius: 10px;
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.4;
+    border: 1px solid transparent;
+    border-left-width: 4px;
+    text-align: left;
+    animation: fadeIn 0.25s ease;
+}
+
+.messageError {
+    color: #b42318;
+    background-color: #fef3f2;
+    border-color: #fecdca;
+    border-left-color: #d92d20;
+}
+
+.messageSuccess {
+    color: #067647;
+    background-color: #ecfdf3;
+    border-color: #abefc6;
+    border-left-color: #12b76a;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes cardIn {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(18px);
+    }
+}
+
+/* ---------- Tablet ---------- */
+@media (max-width: 900px) {
+    .cardContainer {
+        width: 94vw;
+    }
+
+    .cardContainer_left {
+        padding: 2rem 1.5rem;
+    }
+}
+
+/* ---------- Mobile: stack vertically ---------- */
+@media (max-width: 700px) {
+    .container {
+        align-items: flex-start;
+        padding: 1rem 0.75rem;
+    }
+
+    .cardContainer {
+        flex-direction: column;
+        width: 100%;
+        min-height: auto;
+        border-radius: 16px;
+    }
+
+    .cardContainer_left {
+        flex: none;
+        padding: 2rem 1.2rem;
+    }
+
+    .cardContainer_right {
+        flex: none;
+        padding: 1.6rem 1.2rem;
+    }
+
+    .cardLeft_heading {
+        font-size: 1.7rem;
+    }
+
+    .right_card {
+        max-width: 100%;
+    }
+}
+
+/* ---------- Small phones: name/username stack ---------- */
+@media (max-width: 420px) {
+    .inputRow {
+        flex-direction: column;
+        gap: 1.1rem;
+    }
+}
+
+/* ---------- Respect reduced-motion setting ---------- */
+@media (prefers-reduced-motion: reduce) {
+
+    .container::before,
+    .container::after,
+    .cardContainer,
+    .message,
+    .inputRow {
+        animation: none;
+    }
+
+    .buttonSubmit,
+    .buttonSubmit::after,
+    .inputField {
+        transition: none;
+    }
+}
